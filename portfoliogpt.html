@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Портфолио AI-навыков — Петровская Татьяна Сергеевна</title>
+  <style>
+    :root{
+      --bg-0:#070A12;
+      --bg-1:#0B1022;
+      --card: rgba(255,255,255,.06);
+      --card-2: rgba(255,255,255,.09);
+      --stroke: rgba(255,255,255,.12);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+      --muted-2: rgba(255,255,255,.58);
+      --accent-1:#7C3AED; /* purple */
+      --accent-2:#22D3EE; /* cyan */
+      --accent-3:#34D399; /* green */
+      --shadow: 0 18px 45px rgba(0,0,0,.45);
+      --radius: 18px;
+      --radius-lg: 26px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(124,58,237,.35), transparent 60%),
+        radial-gradient(900px 500px at 95% 5%, rgba(34,211,238,.25), transparent 55%),
+        radial-gradient(700px 500px at 70% 110%, rgba(52,211,153,.18), transparent 55%),
+        linear-gradient(180deg, var(--bg-0), var(--bg-1));
+      overflow-x:hidden;
+    }
+
+    /* subtle grid */
+    .bg-grid{
+      position:fixed; inset:0;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: radial-gradient(ellipse at 40% 20%, rgba(0,0,0,.8), rgba(0,0,0,.15) 55%, transparent 75%);
+      pointer-events:none;
+      opacity:.45;
+    }
+
+    .wrap{
+      width:min(1120px, 100%);
+      margin:0 auto;
+      padding: 38px 18px 72px;
+    }
+
+    /* top header card */
+    .hero{
+      position:relative;
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 28px 24px;
+      overflow:hidden;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(800px 280px at 15% 20%, rgba(124,58,237,.35), transparent 60%),
+        radial-gradient(700px 240px at 85% 30%, rgba(34,211,238,.25), transparent 60%),
+        radial-gradient(700px 260px at 55% 110%, rgba(52,211,153,.18), transparent 55%);
+      filter: blur(6px);
+      opacity:.9;
+      pointer-events:none;
+    }
+
+    .hero > *{ position:relative; z-index:1; }
+
+    .pill-row{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-bottom:14px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.18);
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing: .2px;
+      backdrop-filter: blur(10px);
+    }
+
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background: linear-gradient(135deg, var(--accent-2), var(--accent-1));
+      box-shadow: 0 0 0 3px rgba(34,211,238,.15);
+    }
+
+    /* gradient title with transparent text */
+    h1{
+      margin: 6px 0 6px;
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1.07;
+      letter-spacing:-.02em;
+      font-weight: 800;
+      background: linear-gradient(90deg, rgba(255,255,255,.92), rgba(255,255,255,.55) 35%, rgba(255,255,255,.92) 70%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color: transparent;
+      text-shadow: 0 12px 35px rgba(0,0,0,.35);
+    }
+
+    .headline{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px 12px;
+      align-items: baseline;
+    }
+
+    .name{
+      font-size: clamp(16px, 2.2vw, 20px);
+      font-weight: 650;
+      color: rgba(255,255,255,.88);
+    }
+
+    .subtitle{
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+      max-width: 70ch;
+    }
+
+    .accent-line{
+      margin-top: 18px;
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(34,211,238,.5), rgba(124,58,237,.6), transparent);
+      opacity:.9;
+    }
+
+    /* section */
+    .section{
+      margin-top: 26px;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    @media (max-width: 920px){
+      .section{ grid-template-columns: 1fr; }
+    }
+
+    .panel{
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.04);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      overflow:hidden;
+    }
+
+    .panel-header{
+      padding: 18px 18px 14px;
+      display:flex;
+      justify-content:space-between;
+      gap: 12px;
+      align-items:flex-start;
+      border-bottom: 1px solid rgba(255,255,255,.09);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+    }
+
+    .panel-title{
+      margin:0;
+      font-size: 14px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.70);
+    }
+
+    .panel-note{
+      margin: 3px 0 0;
+      color: var(--muted-2);
+      font-size: 13px;
+      line-height: 1.45;
+      max-width: 60ch;
+    }
+
+    /* tools tag grid */
+    .tags{
+      padding: 14px 18px 18px;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+    }
+
+    .tag{
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.18);
+      padding: 9px 11px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: rgba(255,255,255,.80);
+      backdrop-filter: blur(10px);
+      position:relative;
+      overflow:hidden;
+      transform: translateZ(0);
+    }
+    .tag::after{
+      content:"";
+      position:absolute; inset:-1px;
+      background: linear-gradient(90deg, rgba(34,211,238,.18), rgba(124,58,237,.18), rgba(52,211,153,.18));
+      opacity:0;
+      transition: opacity .25s ease;
+      pointer-events:none;
+    }
+    .tag:hover::after{ opacity:1; }
+
+    /* skill cards */
+    .cards{
+      padding: 18px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .card{
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: var(--radius);
+      padding: 16px 16px 14px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.22);
+      position:relative;
+      overflow:hidden;
+      transition: transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(600px 120px at 10% 0%, rgba(34,211,238,.18), transparent 60%),
+                  radial-gradient(540px 120px at 80% 10%, rgba(124,58,237,.18), transparent 60%);
+      opacity:.8;
+      filter: blur(8px);
+      pointer-events:none;
+    }
+
+    .card::after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.06), transparent);
+      transform: translateX(-120%);
+      transition: transform .65s ease;
+      pointer-events:none;
+    }
+
+    .card:hover{
+      transform: translateY(-4px);
+      border-color: rgba(34,211,238,.30);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.035));
+      box-shadow: 0 16px 40px rgba(0,0,0,.35);
+    }
+    .card:hover::after{ transform: translateX(120%); }
+
+    .card > *{ position:relative; z-index:1; }
+
+    .card-top{
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+      justify-content:space-between;
+    }
+
+    .k{
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+      min-width: 0;
+    }
+
+    .badge{
+      flex: 0 0 auto;
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      display:grid;
+      place-items:center;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.20);
+      box-shadow: 0 10px 25px rgba(0,0,0,.18);
+    }
+
+    .badge svg{ width:18px; height:18px; opacity:.9; }
+
+    .card h3{
+      margin:0;
+      font-size: 16px;
+      letter-spacing: -.01em;
+      color: rgba(255,255,255,.92);
+      line-height: 1.25;
+    }
+
+    .meta{
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+
+    .list{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: rgba(255,255,255,.82);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+    .list li{ margin: 5px 0; }
+
+    /* case block */
+    .case{
+      margin-top: 12px;
+      border: 1px dashed rgba(34,211,238,.35);
+      background: linear-gradient(180deg, rgba(34,211,238,.10), rgba(34,211,238,.04));
+      border-radius: 16px;
+      padding: 12px 12px 12px;
+      position:relative;
+    }
+    .case::before{
+      content:"КЕЙС";
+      position:absolute;
+      top: -10px; left: 12px;
+      padding: 4px 10px;
+      font-size: 11px;
+      letter-spacing: .16em;
+      border-radius: 999px;
+      border: 1px solid rgba(34,211,238,.35);
+      background: rgba(7,10,18,.85);
+      color: rgba(255,255,255,.80);
+    }
+    .case p{
+      margin: 6px 0 0;
+      color: rgba(255,255,255,.88);
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    /* footer */
+    footer{
+      margin-top: 18px;
+      color: rgba(255,255,255,.60);
+      font-size: 12.5px;
+      text-align:center;
+    }
+
+    /* accessibility */
+    @media (prefers-reduced-motion: reduce){
+      .card, .card::after, .tag::after{ transition:none !important; }
+      .card:hover{ transform:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <main class="wrap">
+    <section class="hero" aria-labelledby="title">
+      <div class="pill-row">
+        <span class="pill"><span class="dot"></span> AI Skills Portfolio</span>
+        <span class="pill">Практика • кейсы • автоматизация</span>
+        <span class="pill">Адаптивная вёрстка</span>
+      </div>
+
+      <div class="headline">
+        <h1 id="title">ПОРТФОЛИО AI-навыков</h1>
+      </div>
+
+      <div class="headline">
+        <div class="name">Петровская Татьяна Сергеевна</div>
+      </div>
+
+      <p class="subtitle">
+        Ключевые AI-навыки и практические кейсы: нейросети, промт-инжиниринг, контент, аналитика и автоматизация процессов.
+      </p>
+
+      <div class="accent-line" role="presentation"></div>
+    </section>
+
+    <section class="section" aria-label="Контент">
+      <!-- Skills -->
+      <div class="panel">
+        <header class="panel-header">
+          <div>
+            <p class="panel-title">Навыки</p>
+            <p class="panel-note">Карточки с акцентами и анимацией при наведении. Примеры кейсов выделены отдельными блоками.</p>
+          </div>
+        </header>
+
+        <div class="cards">
+          <!-- 1 -->
+          <article class="card">
+            <div class="card-top">
+              <div class="k">
+                <div class="badge" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2l8.5 5v10L12 22 3.5 17V7L12 2Z" stroke="currentColor" stroke-width="1.6"/>
+                    <path d="M12 7v10M7.5 9.5l9 5" stroke="currentColor" stroke-width="1.6" opacity=".85"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3>1.1. Эффективная работа с нейросетями</h3>
+                  <div class="meta">Понимание различий, быстрый поиск, личная эффективность</div>
+                </div>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li>Различаю ИИ, нейросети, ChatGPT — умею объяснять разницу простым языком.</li>
+              <li>Экономлю время на поиске информации: чат-боты вместо Google.</li>
+              <li>Применяю нейросети для личной эффективности: планирование путешествий и событий, подбор тренировок, обучение языкам.</li>
+            </ul>
+
+            <div class="case">
+              <p>Оптимизировала рутинные задачи с помощью ChatGPT.</p>
+            </div>
+          </article>
+
+          <!-- 2 -->
+          <article class="card">
+            <div class="card-top">
+              <div class="k">
+                <div class="badge" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M4 7h16M4 12h10M4 17h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                    <path d="M18.2 13.2l1.8 1.8-4.7 4.7H13.5v-1.8l4.7-4.7Z" stroke="currentColor" stroke-width="1.6"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3>1.2. Промт-инжиниринг</h3>
+                  <div class="meta">Техники промтов, фреймворки для бизнес-текстов и аналитики</div>
+                </div>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li>Владею техниками: последовательные, ролевые, диалоговые промты, кастомизация под задачу.</li>
+              <li>Использую фреймворки для генерации сложных бизнес-текстов и аналитики.</li>
+            </ul>
+
+            <div class="case">
+              <p>Разработала промты для генерации управленческих решений в сложных ситуациях — сокращение времени на анализ на 70%.</p>
+            </div>
+          </article>
+
+          <!-- 3 -->
+          <article class="card">
+            <div class="card-top">
+              <div class="k">
+                <div class="badge" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M6 3h9l3 3v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.6"/>
+                    <path d="M9 11h6M9 15h6M9 19h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".9"/>
+                    <path d="M15 3v3h3" stroke="currentColor" stroke-width="1.6" opacity=".85"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3>1.3. Работа с текстами и контентом</h3>
+                  <div class="meta">Регламенты, письма, презентации, контент-стратегии</div>
+                </div>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li>Автоматизация написания регламентов, писем, презентаций, аналитических записок.</li>
+              <li>Генерация контент-стратегий, статей, презентаций, коммерческих предложений.</li>
+            </ul>
+
+            <div class="case">
+              <p>С помощью ChatGPT создала более 20 презентаций и статей для отдела маркетинга.</p>
+            </div>
+          </article>
+
+          <!-- 4 -->
+          <article class="card">
+            <div class="card-top">
+              <div class="k">
+                <div class="badge" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M4 19V5M4 19h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                    <path d="M7 16l3-4 3 2 4-6 2 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 8h2M12 8h2M16 8h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".85"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3>1.4. Аналитика и финансы</h3>
+                  <div class="meta">Выписки, финансовые модели, анализ отчётности, риски</div>
+                </div>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li>Автоматизирую обработку выписок, подготовку финансовых моделей, анализ отчётности.</li>
+              <li>Разработка дэшбордов и методик финанализа с помощью AI.</li>
+            </ul>
+
+            <div class="case">
+              <p>Построила систему автоматического анализа договоров и выявления рисков — 90% кейсов закрываются без юриста.</p>
+            </div>
+          </article>
+
+          <!-- 5 -->
+          <article class="card">
+            <div class="card-top">
+              <div class="k">
+                <div class="badge" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 3v6m0 6v6M3 12h6m6 0h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                    <path d="M8.5 8.5l2-2 2 2m-4 7l2 2 2-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3>1.5. Автоматизация процессов</h3>
+                  <div class="meta">Google Sheets, расчёты, нормализация данных, AI-ассистенты</div>
+                </div>
+              </div>
+            </div>
+
+            <ul class="list">
+              <li>Интеграция нейросетей с Google Таблицами, автоматизация расчётов, нормализация данных.</li>
+              <li>Внедрение AI-ассистентов в бизнес-процессы (финансы, HR, продажи).</li>
+            </ul>
+
+            <div class="case">
+              <p>Написала скрипт для автосоздания KPI-дашбордов в Google Sheets с использованием GPT.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Tools -->
+      <aside class="panel" aria-label="Инструменты">
+        <header class="panel-header">
+          <div>
+            <p class="panel-title">Инструменты</p>
+            <p class="panel-note">Сетка в виде тегов. Можно расширять под реальные используемые сервисы.</p>
+          </div>
+        </header>
+
+        <div class="tags">
+          <span class="tag">ChatGPT</span>
+          <span class="tag">Prompt Frameworks</span>
+          <span class="tag">Google Sheets</span>
+          <span class="tag">Dashboards</span>
+          <span class="tag">Text Automation</span>
+          <span class="tag">Content Strategy</span>
+          <span class="tag">Finance Models</span>
+          <span class="tag">Risk Review</span>
+          <span class="tag">AI Assistants</span>
+          <span class="tag">Data Normalization</span>
+        </div>
+      </aside>
+    </section>
+
+    <footer>
+      © Портфолио AI-навыков — Петровская Татьяна Сергеевна
+    </footer>
+  </main>
+</body>
+</html>
